@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
-import Screen from "../home/home"
 import Register from "../views/Register"
 import Edit from "../views/Edit"
 
@@ -21,11 +20,6 @@ Vue.use(VueRouter)
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
-    path: '/screen',
-    name: 'Screen',
-    component: Screen
   },
   {
     path: '/register',
