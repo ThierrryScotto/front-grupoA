@@ -12,5 +12,8 @@ export default {
   },
   editStudentRegister(student) {
     return api.put('edit', { student })
+  },
+  deleteStudent(id) {
+    return api.delete(`delete/${id}`);
   }
 }

@@ -26,22 +26,6 @@
               <span class="headline">{{ formTitle }}</span>
             </v-card-title>
 
-            <v-card-text>
-              <v-container>
-                <v-row>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.register" label="Registro Acadêmico"></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.name" label="Nome"></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.document" label="CPF"></v-text-field>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-card-text>
-
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
@@ -57,7 +41,6 @@
         <v-icon
           small
           class="mr-2"
-          @click="editItem(item)"
         >
           mdi-pencil
         </v-icon>
@@ -65,7 +48,7 @@
 
       <v-icon
         small
-        @click="deleteItem(item)"
+        @click="deleteStudent(item)"
       >
         mdi-delete
       </v-icon>
@@ -133,15 +116,13 @@
           })
       },
 
-      editItem (item) {
-        this.editedIndex = this.studens.indexOf(item)
-        this.editedItem = Object.assign({}, item)
-        this.dialog = true
+      deleteStudent (item) {
+        const index = this.studens.indexOf(item)
+        confirm('Are you sure you want to delete this item?') && this.delete(item)
       },
 
-      deleteItem (item) {
-        const index = this.studens.indexOf(item)
-        confirm('Are you sure you want to delete this item?') && this.studens.splice(index, 1)
+      delete(item) {
+        controller.deleteStudent(item.register)
       },
 
       close () {
