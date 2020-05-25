@@ -26,7 +26,6 @@
       </div>
 
     </v-app-bar>
-    <v-aler></v-aler>
     <v-content>
       <router-view />
     </v-content>

@@ -4,7 +4,7 @@ export default {
   getStudents:() => {
     return api.get('students');
   },
-  getStundet:(student) => {
+  getOneStudent:(student) => {
     return api.get(`student/${ student }`)
   },
   registerStudent(student) {

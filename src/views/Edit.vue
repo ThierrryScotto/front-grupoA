@@ -6,6 +6,7 @@
       lazy-validation
     >
       <v-text-field
+        disabled
         v-model="student.register"
         label="Código de Registro"
         required
@@ -28,6 +29,7 @@
       ></v-text-field>
 
       <v-text-field
+        disabled
         v-model="student.document"
         :counter="11"
         label="CPF"
@@ -106,7 +108,7 @@ import controller from "../server/api"
     }),
 
     methods: {
-      edit () {
+      async edit () {
         if (!this.student.name)
           this.checkFields('nome')
         else if (!this.student.lastName)
@@ -122,7 +124,7 @@ import controller from "../server/api"
             name: this.student.name,
             email: this.student.email
           }
-          controller.editStudentRegister(student)
+          await controller.editStudentRegister(student)
             .then( res => {
               alert(res.data.success)
               this.cleanField();
@@ -143,7 +145,7 @@ import controller from "../server/api"
       },
 
       getStudentDB(id) {
-        controller.getStundet(id).then(success => {
+        controller.getOneStudent(id).then(success => {
          let obj = success.data;
          this.student = obj;
         }).catch(err => {
