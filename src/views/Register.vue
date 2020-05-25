@@ -37,8 +37,8 @@
       ></v-text-field>
 
       <v-select
-        v-model="select"
-        :items="sex"
+        v-model="sex"
+        :items="items"
         :rules="[v => !!v || 'Este campo é obrigatório']"
         label="Sexo"
         required
@@ -75,7 +75,7 @@ import controller from "../server/api"
       lastName: '',
       document: '',
       email: '',
-      select: null,
+      sex: null,
       nameRules: [
         v => !!v || 'Nome é obrigatório',
         v => (v && v.length <= 10) || 'Name deve ser válido',
@@ -92,7 +92,7 @@ import controller from "../server/api"
         v => !!v || 'E-mail é obrigatório',
         v => /.+@.+\..+/.test(v) || 'E-mail deve ser válido',
       ],
-      sex: [
+      items: [
         'Masculino',
         'Feminino',
       ],
@@ -108,7 +108,7 @@ import controller from "../server/api"
           this.checkFields('CPF')
         else if (!this.email)
           this.checkFields('email')
-        else if (!this.select)
+        else if (!this.sex)
           this.checkFields('sexo')
         else {
           let student = {
@@ -116,7 +116,7 @@ import controller from "../server/api"
             lastName: this.lastName,
             document: this.document,
             email: this.email,
-            select: this.select,
+            sex: this.sex,
           }
           await controller.registerStudent(student)
             .then(success => {

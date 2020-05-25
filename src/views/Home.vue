@@ -21,17 +21,6 @@
               <v-btn color="primary" dark class="mb-2" >Cadastrar aluno</v-btn>
             </router-link>
           </template>
-          <v-card>
-            <v-card-title>
-              <span class="headline">{{ formTitle }}</span>
-            </v-card-title>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
-              <v-btn color="blue darken-1" text @click="save">Save</v-btn>
-            </v-card-actions>
-          </v-card>
         </v-dialog>
       </v-toolbar>
     </template>
@@ -77,30 +66,7 @@
         { text: 'Ação', value: 'actions', sortable: false },
       ],
       studens: [],
-      editedIndex: -1,
-      editedItem: {
-        name: '',
-        register: 0,
-        document: 0,
-      },
-      defaultItem: {
-        name: '',
-        register: 0,
-        document: 0,
-      },
     }),
-
-    computed: {
-      formTitle () {
-        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
-      },
-    },
-
-    watch: {
-      dialog (val) {
-        val || this.close()
-      },
-    },
 
     created () {
       this.initialize()
@@ -117,29 +83,11 @@
       },
 
       deleteStudent (item) {
-        const index = this.studens.indexOf(item)
-        confirm('Are you sure you want to delete this item?') && this.delete(item)
+        confirm('Você tem certeza que deseja excluir este aluno?') && this.delete(item)
       },
 
       delete(item) {
         controller.deleteStudent(item.register)
-      },
-
-      close () {
-        this.dialog = false
-        this.$nextTick(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
-          this.editedIndex = -1
-        })
-      },
-
-      save () {
-        if (this.editedIndex > -1) {
-          Object.assign(this.studens[this.editedIndex], this.editedItem)
-        } else {
-          this.studens.push(this.editedItem)
-        }
-        this.close()
       },
     },
   }
