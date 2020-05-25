@@ -53,14 +53,13 @@
         Criar
       </v-btn>
 
-      <router-link to="/" id="link">
       <v-btn
+        to="/"
         color="warning"
         @click="resetValidation"
       >
         Cancelar
       </v-btn>
-      </router-link>
     </v-form>
   </v-container>
 </template>
@@ -140,9 +139,3 @@ import controller from "../server/api"
     },
   }
 </script>
-
-<style scoped>
-  #link {
-    text-decoration:none;
-  }
-</style>

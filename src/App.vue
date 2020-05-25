@@ -24,7 +24,7 @@
           width="100"
         />
       </div>
-
+      <buttonHome />
     </v-app-bar>
     <v-content>
       <router-view />
@@ -33,13 +33,13 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import ButtonHome from './components/ButtonHome';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    ButtonHome,
   },
 
   data: () => ({

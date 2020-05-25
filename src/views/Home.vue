@@ -17,9 +17,7 @@
         <v-spacer></v-spacer>
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="on">
-            <router-link to="/register">
-              <v-btn color="primary" dark class="mb-2" >Cadastrar aluno</v-btn>
-            </router-link>
+              <v-btn to="/register" color="primary" dark class="mb-2" >Cadastrar aluno</v-btn>
           </template>
         </v-dialog>
       </v-toolbar>
