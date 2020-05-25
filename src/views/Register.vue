@@ -6,7 +6,7 @@
       lazy-validation
     >
       <v-text-field
-        v-model="student.name"
+        v-model="name"
         :counter="10"
         :rules="nameRules"
         label="Nome"
@@ -14,7 +14,7 @@
       ></v-text-field>
 
       <v-text-field
-        v-model="student.lastName"
+        v-model="lastName"
         :counter="10"
         :rules="lastNameRules"
         label="Sobrenome"
@@ -22,8 +22,7 @@
       ></v-text-field>
 
       <v-text-field
-        type="number"
-        v-model="student.document"
+        v-model="document"
         :counter="11"
         :rules="documentRules"
         label="CPF"
@@ -31,14 +30,14 @@
       ></v-text-field>
 
       <v-text-field
-        v-model="student.email"
+        v-model="email"
         :rules="emailRules"
         label="E-mail"
         required
       ></v-text-field>
 
       <v-select
-        v-model="student.select"
+        v-model="select"
         :items="sex"
         :rules="[v => !!v || 'Este campo é obrigatório']"
         label="Sexo"
@@ -72,13 +71,11 @@ import controller from "../server/api"
   export default {
     data: () => ({
       valid: true,
-      student: {
-        name: '',
-        lastName: '',
-        document: '',
-        email: '',
-        select: null,
-      },
+      name: '',
+      lastName: '',
+      document: '',
+      email: '',
+      select: null,
       nameRules: [
         v => !!v || 'Nome é obrigatório',
         v => (v && v.length <= 10) || 'Name deve ser válido',
@@ -102,21 +99,32 @@ import controller from "../server/api"
     }),
 
     methods: {
-      create () {
-        if (!this.student.name)
+      async create () {
+        if (!this.name)
           this.checkFields('nome')
-        else if (!this.student.lastName)
+        else if (!this.lastName)
           this.checkFields('sobrenome')
-        else if (!this.student.document)
+        else if (!this.document)
           this.checkFields('CPF')
-        else if (!this.student.email)
+        else if (!this.email)
           this.checkFields('email')
-        else if (!this.student.select)
+        else if (!this.select)
           this.checkFields('sexo')
         else {
-          this.cleanField();
-          controller.registerStudent(this.student);
-          alert('Usuário criado com sucesso')
+          let student = {
+            name: this.name,
+            lastName: this.lastName,
+            document: this.document,
+            email: this.email,
+            select: this.select,
+          }
+          await controller.registerStudent(student)
+            .then(success => {
+              alert('Usuário criado com sucesso')
+              this.cleanField();
+            }).catch(err => {
+              alert("Algo deu errado!")
+            })
         }
         
       },
