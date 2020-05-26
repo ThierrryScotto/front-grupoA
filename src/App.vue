@@ -2,7 +2,6 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
       dark
     >
       <div class="d-flex align-center">
@@ -10,21 +9,12 @@
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="https://www.grupoa.com.br/hs-fs/hubfs/logo-grupoa.png?width=136&name=logo-grupoa.png"
           transition="scale-transition"
-          width="40"
+          width="120"
         />
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
       </div>
-      <buttonHome />
     </v-app-bar>
     <v-content>
       <router-view />
@@ -33,14 +23,9 @@
 </template>
 
 <script>
-import ButtonHome from './components/ButtonHome';
 
 export default {
   name: 'App',
-
-  components: {
-    ButtonHome,
-  },
 
   data: () => ({
     //
