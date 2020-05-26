@@ -60,6 +60,7 @@
           value: 'register',
         },
         { text: 'Nome', value: 'name' },
+        { text: 'Sobrenome', value: 'lastName' },
         { text: 'CPF', value: 'document' },
         { text: 'Email', value: 'email' },
         { text: 'Ação', value: 'actions', sortable: false },
@@ -85,7 +86,6 @@
               this.studens = res.users;
             } else alert(res.error)
           }).catch(err => {
-            alert('Ops')
           })
       },
 
