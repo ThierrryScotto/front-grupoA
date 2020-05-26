@@ -46,7 +46,7 @@
 
       <v-btn
         :disabled="!valid"
-        color="success"
+        color="secondary"
         class="mr-4"
         @click="create"
       >

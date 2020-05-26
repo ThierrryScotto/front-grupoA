@@ -3,6 +3,7 @@
     <v-app-bar
       app
       dark
+      color="primary"
     >
       <div class="d-flex align-center">
         <v-img
@@ -23,7 +24,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
 
