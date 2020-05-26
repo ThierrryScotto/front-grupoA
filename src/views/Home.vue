@@ -61,13 +61,14 @@
         },
         { text: 'Nome', value: 'name' },
         { text: 'CPF', value: 'document' },
+        { text: 'Email', value: 'email' },
         { text: 'Ação', value: 'actions', sortable: false },
       ],
       studens: [],
     }),
 
     created () {
-      this.initialize()
+      this.initialize();
     },
 
     methods: {
