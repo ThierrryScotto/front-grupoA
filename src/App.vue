@@ -12,7 +12,7 @@
           contain
           src="https://www.grupoa.com.br/hs-fs/hubfs/logo-grupoa.png?width=136&name=logo-grupoa.png"
           transition="scale-transition"
-          width="120"
+          width="130"
         />
 
       </div>
