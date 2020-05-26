@@ -71,6 +71,10 @@
       this.initialize();
     },
 
+    updated() {
+      this.initialize();
+    },
+
     methods: {
       initialize () {
         controller.getStudents()
