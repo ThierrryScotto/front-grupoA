@@ -79,7 +79,11 @@
       initialize () {
         controller.getStudents()
           .then(success => {
-            this.studens = success.data;
+            
+            let res = success.data;
+            if (res.success) {
+              this.studens = res.users;
+            } else alert(res.error)
           }).catch(err => {
             alert('Ops')
           })
@@ -90,7 +94,15 @@
       },
 
       delete(item) {
-        controller.deleteStudent(item.register)
+        controller.deleteStudent(item.register).then(success => {
+          let res = success.data;
+
+          if (res.success) {
+            alert('Usuário deletado com sucesso')
+          } else {
+            alert(res.error)
+          }
+        })
       },
     },
   }

@@ -119,10 +119,16 @@ import controller from "../server/api"
           this.checkFields('sexo')
         else {
           await controller.editStudentRegister(this.student)
-            .then( res => {
-              alert(res.data.success)
-              this.cleanField();
-            }).catch ( err => alert(err.data.success))
+            .then( success => {
+              let res = success.data
+
+              if (res.success) {
+                alert("Editado com sucesso")
+                this.cleanField();
+              }else {
+                alert(res.error)
+              }
+            }).catch ( err => alert(err.data.error))
         }
       },
 
@@ -138,12 +144,15 @@ import controller from "../server/api"
         this.$refs.form.reset()
       },
 
-      getStudentDB(id) {
-        controller.getOneStudent(id).then(success => {
-         let obj = success.data;
-         this.student = obj;
-        }).catch(err => {
-
+      async getStudentDB(id) {
+        await controller.getOneStudent(id).then(success => {
+         let res = success.data;
+         
+         if (res.success) {
+           this.student = res.user;
+         } else {
+           alert(res.error)
+         }
         })
       }
     },

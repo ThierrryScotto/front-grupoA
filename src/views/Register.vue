@@ -119,13 +119,16 @@ import controller from "../server/api"
           }
           await controller.registerStudent(student)
             .then(success => {
-              alert('Usuário criado com sucesso')
-              this.cleanField();
+              let res = success.data
+
+              if (res.success) {
+                alert('Usuário criado com sucesso')
+                this.cleanField();
+              } else alert(res.error)
             }).catch(err => {
               alert("Algo deu errado!")
             })
         }
-        
       },
       resetValidation () {
         this.$refs.form.resetValidation()
