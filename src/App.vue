@@ -15,6 +15,15 @@
           width="130"
         />
 
+      <v-chip
+        class="ma-2"
+        color="primary"
+        href="/"
+        medium
+      >
+        Alunos  
+      </v-chip>
+
       </div>
     </v-app-bar>
     <v-content>
