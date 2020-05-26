@@ -5,6 +5,7 @@
     sort-by="register"
     class="elevation-1"
     locale="pt-BR"
+    item-key="register"
   >
     <template v-slot:top>
       <v-toolbar flat color="white">
