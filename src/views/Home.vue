@@ -36,10 +36,44 @@
 
       <v-icon
         small
-        @click="deleteStudent(item)"
+        @click.stop="dialog = true"
       >
         mdi-delete
       </v-icon>
+
+      <v-dialog
+            v-model="dialog"
+            max-width="290"
+          >
+      <v-card>
+        <v-card-title class="headline">Atenção</v-card-title>
+
+        <v-card-text>
+          Você tem certeza que deseja excluir o aluno
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            color="warning"
+            text
+            @click="dialog = false"
+          >
+            Cancelar
+          </v-btn>
+
+          <v-btn
+            color="secondary"
+            text
+            @click="dialog = false | deleteStudent(item)"
+          >
+            Confirmar
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     </template>
     <template v-slot:no-data>
       <v-btn color="primary" @click="initialize">Reset</v-btn>
@@ -91,10 +125,6 @@
       },
 
       deleteStudent (item) {
-        confirm('Você tem certeza que deseja excluir este aluno?') && this.delete(item)
-      },
-
-      delete(item) {
         controller.deleteStudent(item.register).then(success => {
           let res = success.data;
 
