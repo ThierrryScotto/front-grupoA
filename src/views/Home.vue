@@ -91,7 +91,7 @@
       },
 
       deleteStudent (item) {
-        confirm('Você tem certeza que deseja excluir este aluno?') && this.delete(item)
+        confirm('Você tem certeza que deseja excluir este aluno?') && this.delete(item) 
       },
 
       delete(item) {
